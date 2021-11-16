@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 num=0
 UPLOAD_FOLDER = './uploads'
+
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 
@@ -126,11 +127,11 @@ def facecapture():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
             filename = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
+            
             #Test Area
             catched_face_name = face_catch_api(filename)
-            res = face_recognition_api(catched_face_name)
-            return render_template("certain_person.html",test_image = filename,res = res)
+            catched_face_name = os.path.join(app.config['UPLOAD_FOLDER'],catched_face_name)
+            return render_template("facecapture.html",test_image = filename,predict_image = catched_face_name)
             ##########
 
             '''res = face_catch_api(filename)

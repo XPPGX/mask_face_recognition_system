@@ -13,7 +13,7 @@ def face_catch(img,filename_f):
         y1 = d.top()
         x2 = d.right()
         y2 = d.bottom()
-        new_img_name =  'test_image/other_test/face_' + filename_f + '.jpg'
+        new_img_name =  'uploads/face_' + filename_f + '.jpg'
         print(new_img_name)
         img_save = img[y1:y2,x1:x2]
         if(i == -1):
@@ -27,7 +27,7 @@ def face_catch_api(filename):
     filename_f = filename.split('\\')[-1].split('.')[0]
     img = cv2.imread(filename)
     face_catch(img,filename_f)
-    return_name = 'test_image/other_test/face_' + filename_f + '.jpg'
+    return_name = 'face_' + filename_f + '.jpg'
     return return_name
 
 if __name__ == '__main__':

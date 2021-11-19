@@ -136,9 +136,15 @@ def facecapture():
             
             #Test Area
             catched_face_name = face_catch_api(filename)
-            catched_face_name = os.path.join(app.config['UPLOAD_FOLDER'],catched_face_name)
-            return render_template("facecapture.html",test_image = filename,predict_image = catched_face_name)
+            if (catched_face_name == 'capture_fail'):
+                print(catched_face_name)
+                catched_face_name = './static/x.jpg'
+                return render_template("facecapture.html",test_image = filename,predict_image = catched_face_name)
+            else:
+                catched_face_name = os.path.join(app.config['UPLOAD_FOLDER'],catched_face_name)
+                return render_template("facecapture.html",test_image = filename,predict_image = catched_face_name)
             ##########
+
 
             '''res = face_catch_api(filename)
             return render_template("facecapture.html",test_image = filename,res = res)

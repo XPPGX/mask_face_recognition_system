@@ -12,6 +12,12 @@ app = Flask(__name__)
 
 #app.register_blueprint(mask_detector_api,url_prefix='/') 
 
+if os.path.isdir('./uploads'):
+    pass
+else:
+    os.mkdir('uploads')
+
+
 num=0
 UPLOAD_FOLDER = './uploads'
 
